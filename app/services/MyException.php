@@ -40,7 +40,7 @@ class MyException extends \Exception {
         //写入日志
         Log::write($error);
         //输出到控制台
-        echo $error;
+        echo $error."\n";
     }
 
     /**

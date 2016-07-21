@@ -29,6 +29,12 @@ $namespaces = array(
 );
 //设置自动加载命名空间处理函数
 spl_autoload_register('loader');
+
+//处理全局异常
+set_error_handler('\Pay\Service\MyException::handlerError');
+//程序运行结束时执行
+//register_shutdown_function('\Pay\Service\MyException::shutdown');
+
 //接受的参数个数,至少需要接受2个参数
 if ($argc >= 2) {
     //控制器名称
@@ -63,7 +69,7 @@ if ($argc >= 2) {
             $task->$actionMethod();
         }catch (\Exception $e){
             //处理异常
-            echo sprintf("Exception 【%s】 \n",$e->getTraceAsString());
+            echo sprintf("myf.php Exception 【%s】 \n",$e->getTraceAsString());
         }finally{
             //确保后置任务一定能够被执行
             $task->_afterMethodAction($args);

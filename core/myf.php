@@ -53,8 +53,12 @@ if ($argc >= 2) {
         $task = new $className();
         //全局
         try{
+            $args = [
+                'class_name'=>$className,
+                'method_name'=>$actionMethod,
+            ];
             //前置任务
-            $task->_beforeMethodAction();
+            $task->_beforeMethodAction($args);
             //执行任务中的方法
             $task->$actionMethod();
         }catch (\Exception $e){
@@ -62,7 +66,7 @@ if ($argc >= 2) {
             echo sprintf("Exception 【%s】 \n",$e->getTraceAsString());
         }finally{
             //确保后置任务一定能够被执行
-            $task->_afterMethodAction();
+            $task->_afterMethodAction($args);
         }
     } else {
         echo sprintf("%s not found\n", $classFile);

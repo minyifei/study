@@ -216,12 +216,12 @@ Body;
         var_dump(json_encode($arr));
         //中文
         $arrChinese = array(
-            'name'=>'闵益飞',
-            'age'=>30,
+            'name' => '闵益飞',
+            'age' => 30,
         );
         var_dump(json_encode($arrChinese));
         //输出正确的中文
-        var_dump(json_encode($arrChinese,JSON_UNESCAPED_UNICODE));
+        var_dump(json_encode($arrChinese, JSON_UNESCAPED_UNICODE));
 
 
         //对json格式字符串进行解码
@@ -231,54 +231,54 @@ Body;
         var_dump($obj);
         var_dump($obj->name);
         //转成数组
-        var_dump(json_decode($strJson,true));
+        var_dump(json_decode($strJson, true));
         //数字处理
         $json = '{"number": 12345678901234567890}';
-        var_dump(json_decode($json,true));
+        var_dump(json_decode($json, true));
         var_dump(json_decode($json, true, 512, JSON_BIGINT_AS_STRING));
         //特殊字符
         $strJson = '{"name":"8822中文/%208️8\u95f5\u76ca\u98de"}';
-        var_dump(json_decode($strJson,true));
+        var_dump(json_decode($strJson, true));
     }
 
     /**
      * string sprintf ( string $format [, mixed $args [, mixed $... ]] )
      * 格式化字符串
-     * format	必需。转换格式。
-     * arg1	必需。规定插到 format 字符串中第一个 % 符号处的参数。
-     * arg2	可选。规定插到 format 字符串中第二个 % 符号处的参数。
+     * format    必需。转换格式。
+     * arg1    必需。规定插到 format 字符串中第一个 % 符号处的参数。
+     * arg2    可选。规定插到 format 字符串中第二个 % 符号处的参数。
      * arg++ 可选。规定插到 format 字符串中第三、四等等 % 符号处的参数。
      * 参数 format 是转换的格式，以百分比符号 ("%") 开始到转换字符结束。下面的可能的 format 值：
-            %% - 返回百分比符号
-            %b - 二进制数
-            %c - 依照 ASCII 值的字符
-            %d - 带符号十进制数
-            %e - 可续计数法（比如 1.5e+3）
-            %u - 无符号十进制数
-            %f - 浮点数(local settings aware)
-            %F - 浮点数(not local settings aware)
-            %o - 八进制数
-            %s - 字符串
-            %x - 十六进制数（小写字母）
-            %X - 十六进制数（大写字母）
+     * %% - 返回百分比符号
+     * %b - 二进制数
+     * %c - 依照 ASCII 值的字符
+     * %d - 带符号十进制数
+     * %e - 可续计数法（比如 1.5e+3）
+     * %u - 无符号十进制数
+     * %f - 浮点数(local settings aware)
+     * %F - 浮点数(not local settings aware)
+     * %o - 八进制数
+     * %s - 字符串
+     * %x - 十六进制数（小写字母）
+     * %X - 十六进制数（大写字母）
      */
-    public function sprintfAction(){
+    public function sprintfAction() {
         $numA = 22.76542;
         $numB = 23.45999;
         //php保留两位小数并且四舍五入
-        var_dump(sprintf("%.2f",$numA));
-        var_dump(sprintf("%.2f",$numB));
+        var_dump(sprintf("%.2f", $numA));
+        var_dump(sprintf("%.2f", $numB));
         //结果是啥呢
-        var_dump((0.6*6) == 3.6);
+        var_dump((0.6 * 6) == 3.6);
         //取2小数,舍弃其他小数
         $num = 123213.99999;
-        var_dump(sprintf("%.2f",intval($num*100)/100));
-        var_dump(sprintf("%.2f",floor($num*100)/100));
+        var_dump(sprintf("%.2f", intval($num * 100) / 100));
+        var_dump(sprintf("%.2f", floor($num * 100) / 100));
         //分数相乘
-        $numC = 0.6*6*100;
+        $numC = 0.6 * 6 * 100;
         var_dump($numC);
         var_dump(intval($numC));
-        var_dump(intval(sprintf("%.1f",$numC)));
+        var_dump(intval(sprintf("%.1f", $numC)));
         //进一法取整
         var_dump(ceil(4.3));//5
         var_dump(ceil(8.999));//9
@@ -289,8 +289,8 @@ Body;
 
         //数字对比
         $dblA = 0.34;
-        $dblB = 0.01*34.0;
-        var_dump($dblA==$dblB);
+        $dblB = 0.01 * 34.0;
+        var_dump($dblA == $dblB);
     }
 
     /**
@@ -304,13 +304,13 @@ Body;
      * int mt_rand ( int $min , int $max ) 比 rand快4倍
      *
      */
-    public function uniqidAction(){
+    public function uniqidAction() {
         var_dump(uniqid());
         var_dump(uniqid('php_'));
-        var_dump(uniqid('php_',true));
-        var_dump(uniqid(rand(),true));
-        var_dump(uniqid(mt_rand(),true));
-        var_dump(md5(uniqid(mt_rand(),true)));
+        var_dump(uniqid('php_', true));
+        var_dump(uniqid(rand(), true));
+        var_dump(uniqid(mt_rand(), true));
+        var_dump(md5(uniqid(mt_rand(), true)));
     }
 
 }

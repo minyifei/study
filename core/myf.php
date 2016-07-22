@@ -58,19 +58,19 @@ if ($argc >= 2) {
         //创建一个任务对象
         $task = new $className();
         //全局
-        try{
+        try {
             $args = [
-                'class_name'=>$className,
-                'method_name'=>$actionMethod,
+                'class_name' => $className,
+                'method_name' => $actionMethod,
             ];
             //前置任务
             $task->_beforeMethodAction($args);
             //执行任务中的方法
             $task->$actionMethod();
-        }catch (\Exception $e){
+        } catch (\Exception $e) {
             //处理异常
-            echo sprintf("myf.php Exception 【%s】 \n",$e->getTraceAsString());
-        }finally{
+            echo sprintf("myf.php Exception 【%s】 \n", $e->getTraceAsString());
+        } finally {
             //确保后置任务一定能够被执行
             $task->_afterMethodAction($args);
         }

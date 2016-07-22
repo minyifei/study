@@ -53,7 +53,7 @@ class Task {
      * @param array $arguments 参数是一个枚举数组，包含着要传递给方法 $name 的参数
      */
     public function __call($name, $arguments) {
-        echo sprintf("Calling object method:【%s】 args:【%s】\n",$name,join(',',$arguments));
+        echo sprintf("Calling object method:【%s】 args:【%s】\n", $name, join(',', $arguments));
     }
 
     /**
@@ -62,7 +62,7 @@ class Task {
      * @param array $arguments 参数是一个枚举数组，包含着要传递给方法 $name 的参数
      */
     public static function __callStatic($name, $arguments) {
-        echo sprintf("Calling static method:【%s】 args:【%s】\n",$name,join(',',$arguments));
+        echo sprintf("Calling static method:【%s】 args:【%s】\n", $name, join(',', $arguments));
     }
 
 }

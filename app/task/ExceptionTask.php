@@ -57,11 +57,6 @@ class ExceptionTask extends Task {
         call_user_func([11], 1);
     }
 
-    //程序运行结束时执行
-    public function shutdownAction() {
-
-    }
-
     //测试异常
     private function _textException() {
         throw new Exception("错误来了");

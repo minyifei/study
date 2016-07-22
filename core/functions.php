@@ -58,3 +58,38 @@ function getMillisecond() {
     list($s1, $s2) = explode(' ', microtime());
     return (float)sprintf('%.0f', (floatval($s1) + floatval($s2)) * 1000);
 }
+
+/**
+ * 驼峰命名转数组
+ * @param string $str
+ * @return array
+ */
+function getArrayFromCame($str){
+    $str=lcfirst($str);
+    $array = array();
+    for($i=0;$i<strlen($str);$i++){
+        if($str[$i] == strtolower($str[$i])){
+            $array[] = $str[$i];
+        }else{
+            if($i>0){
+                $array[] = '_';
+            }
+            $array[] = strtolower($str[$i]);
+        }
+    }
+    $newStr = join('',$array);
+    return explode("_",$newStr);
+}
+
+/**
+ * 数组转驼峰命名
+ * @param array $array
+ * @return string
+ */
+function getCameFromArray($array){
+    $result = '';
+    foreach($array as $value){
+        $result.= ucfirst($value);
+    }
+    return lcfirst($result);
+}

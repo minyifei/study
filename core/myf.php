@@ -65,6 +65,7 @@ if ($argc >= 2) {
             ];
             //前置任务
             $task->_beforeMethodAction($args);
+            $params = [];
             //执行任务中的方法
             $task->$actionMethod();
         } catch (\Exception $e) {

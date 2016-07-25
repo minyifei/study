@@ -90,8 +90,7 @@ abstract class Entity implements \ArrayAccess {
         $arr = getArrayFromCame($name);
         //如果是getXxx或setXxx
         if (count($arr) >= 2 && in_array($arr[0], ['get', 'set'])) {
-            $method = $arr[0];
-            unset($arr[0]);
+            $method = array_shift($arr);
             //把['xxx','yyy']转成'xxxYyy'
             $index = getCameFromArray($arr);
             switch ($method) {

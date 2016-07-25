@@ -29,6 +29,7 @@ function loader($className) {
 function getClassFile($className) {
     global $namespaces;
     $names = explode("\\", $className);
+    //将数组最后一个单元弹出
     $class = array_pop($names);
     $key = join("\\", $names);
     //系统命名空间
